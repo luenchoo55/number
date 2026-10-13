@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "東方靈數計算機",
   description:
     "輸入身分證字號、手機、車牌或地址，計算生氣、天醫、延年、伏位、絕命、五鬼、六煞、禍害八星磁場。",
+  // 不讓搜尋引擎收錄
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: { index: false, follow: false, noimageindex: true },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
