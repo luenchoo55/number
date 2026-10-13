@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcfbff;
+  --foreground: #4b5157;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto-tc), "Microsoft JhengHei", sans-serif;
+  --font-num: var(--font-nunito), var(--font-noto-tc), sans-serif;
+
+  /* 參考圖配色 */
+  --color-good: #a07cf0;
+  --color-good-deep: #7d55e3;
+  --color-good-soft: #f3eefe;
+  --color-bad: #5c9bef;
+  --color-bad-deep: #3b7be0;
+  --color-bad-soft: #edf4fe;
+  --color-mute: #a7b0b5;
+  --color-mute-dark: #7f898f;
+  --color-pink: #ec4f9e;
+  --color-pink-soft: #fdeef6;
+  --color-line: #e4ddf8;
+
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: float 9s ease-in-out infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, #efe7ff 0%, transparent 60%),
+    radial-gradient(50rem 36rem at -10% 20%, #e8f1ff 0%, transparent 60%),
+    radial-gradient(40rem 30rem at 100% 75%, #fdeef6 0%, transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-num {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-gradient-good {
+  background: linear-gradient(135deg, #b597f7, #7d55e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-bad {
+  background: linear-gradient(135deg, #7fb4f5, #3b7be0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-pink {
+  background: linear-gradient(135deg, #f47bb8, #d93a8a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-title {
+  background: linear-gradient(160deg, #c3cace 0%, #9aa4aa 55%, #b9a6ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  background: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-line);
+  box-shadow:
+    0 1px 2px rgb(125 85 227 / 0.04),
+    0 12px 32px -12px rgb(125 85 227 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.pink-card {
+  border: 1.5px solid rgb(236 79 158 / 0.35);
+  box-shadow: 0 10px 28px -16px rgb(236 79 158 / 0.45);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s;
+}
+.pink-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px -16px rgb(236 79 158 / 0.55);
+}
