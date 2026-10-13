@@ -360,8 +360,8 @@ export default function Home() {
             <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#8f999f] to-[#6f787e] p-5 text-white">
               <p className="text-sm font-bold tracking-widest text-white/70">不好的數字為神明使用</p>
               {AVOID.map((a) => (
-                <div key={a.num} className="mt-3 flex items-baseline gap-3">
-                  <span className="font-num text-4xl font-black">{a.num}</span>
+                <div key={a.num} className="mt-3 flex items-center gap-3">
+                  <span className="font-num shrink-0 text-4xl font-black leading-none">{a.num}</span>
                   <span className="text-sm leading-snug text-white/85">{a.note}</span>
                 </div>
               ))}
