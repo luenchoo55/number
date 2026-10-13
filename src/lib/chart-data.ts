@@ -44,7 +44,7 @@ export const CHART: ChartRow[] = [
     title: "守財 健康 創業",
     desc: "用太多會變鐵公雞",
     pairs: [
-      { nums: ["19", "91"] },
+      { nums: ["19", "91"], note: "帝王數" },
       { nums: ["78", "87"] },
       { nums: ["43", "34"], note: "為善破財", muted: true },
       { nums: ["26", "62"] },

@@ -72,6 +72,7 @@ function InputRow({
   placeholder,
   button,
   examples,
+  onClear,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -79,6 +80,8 @@ function InputRow({
   placeholder: string;
   button: string;
   examples?: string[];
+  /** 有值時代表已算完，按鈕變成「清除」 */
+  onClear?: () => void;
 }) {
   return (
     <div>
@@ -95,12 +98,22 @@ function InputRow({
           placeholder={placeholder}
           className="font-num min-w-0 flex-1 bg-transparent px-3 py-2.5 text-xl font-bold tracking-wider text-foreground outline-none placeholder:font-sans placeholder:text-sm placeholder:font-normal placeholder:tracking-normal placeholder:text-mute sm:text-2xl sm:placeholder:text-base"
         />
-        <button
-          type="submit"
-          className="shrink-0 rounded-2xl bg-gradient-to-br from-[#f47bb8] to-pink px-5 text-base font-black text-white shadow-[0_8px_20px_-8px_rgb(236_79_158/0.7)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgb(236_79_158/0.7)] active:translate-y-0 sm:px-8 sm:text-lg"
-        >
-          {button}
-        </button>
+        {onClear ? (
+          <button
+            type="button"
+            onClick={onClear}
+            className="shrink-0 rounded-2xl border-2 border-pink/40 bg-pink-soft px-5 text-base font-black text-pink transition hover:-translate-y-0.5 hover:border-pink active:translate-y-0 sm:px-8 sm:text-lg"
+          >
+            清除
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="shrink-0 rounded-2xl bg-gradient-to-br from-[#f47bb8] to-pink px-5 text-base font-black text-white shadow-[0_8px_20px_-8px_rgb(236_79_158/0.7)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgb(236_79_158/0.7)] active:translate-y-0 sm:px-8 sm:text-lg"
+          >
+            {button}
+          </button>
+        )}
       </form>
       {examples && (
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-mute">
@@ -177,6 +190,14 @@ function IdPanel() {
         value={input}
         onChange={setInput}
         onSubmit={(v) => setSubmitted(v ?? input)}
+        onClear={
+          submitted !== null && input === submitted
+            ? () => {
+                setInput("");
+                setSubmitted(null);
+              }
+            : undefined
+        }
         placeholder="輸入身分證字號"
         button="計算"
         examples={["A123456789"]}
@@ -257,6 +278,14 @@ function AnyPanel() {
         value={input}
         onChange={setInput}
         onSubmit={(v) => setSubmitted(v ?? input)}
+        onClear={
+          submitted !== null && input === submitted
+            ? () => {
+                setInput("");
+                setSubmitted(null);
+              }
+            : undefined
+        }
         placeholder="輸入一串英數字"
         button="計算"
         examples={["0912345678", "ABC-1234"]}

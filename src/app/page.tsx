@@ -28,7 +28,7 @@ export default function Home() {
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-8">
           <a href="#" className="mr-2 flex shrink-0 items-center gap-2">
             <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-good to-good-deep text-sm font-black text-white">
-              靈
+              數
             </span>
             <span className="hidden font-black tracking-wider text-mute-dark sm:inline">東方靈數</span>
           </a>
